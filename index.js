@@ -3,6 +3,7 @@ const env = require("dotenv").config();
 const deployCommands = require("./functions/SlashCommands/deploy-commands.js");
 const interactionCreate = require("./functions/Interactions/interactionCreate.js");
 const welcomeMessage = require("./functions/welcomeMessage/welcomeMessage.js");
+const createSettings = require("./functions/createJsons/createSettings.js");
 const fs = require("fs");
 
 const client = new Client({
@@ -11,6 +12,7 @@ const client = new Client({
 
 client.on("ready", () => {
 	console.log("Bot is online");
+	createSettings();
 	deployCommands();
 });
 
