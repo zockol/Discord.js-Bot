@@ -96,6 +96,12 @@ Coming soon
 
 Feel free to [open issues](https://github.com/zockol/Discord.js-Bot/issues) to submit feature ideas and see a list of known issues.
 
+## Working Commands/Functions
+
+- /settings x y | Enable/Disable different Settings
+- Activate "Welcome Messages" in specific channels by using /settings
+- automatically create a settings.json file on first bot start
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
