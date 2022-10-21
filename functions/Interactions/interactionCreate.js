@@ -1,3 +1,5 @@
+const settings = require("./InteractionExecutes/settingsCommand.js");
+
 module.exports = async function (interaction) {
 	if (!interaction.isChatInputCommand()) return;
 
@@ -5,7 +7,7 @@ module.exports = async function (interaction) {
 
 	if (commandName === "ping") {
 		await interaction.reply("Pong!");
-	} else if (commandName === "beep") {
-		await interaction.reply("Boop!");
+	} else if (commandName === "settings") {
+		settings(interaction);
 	}
 };
