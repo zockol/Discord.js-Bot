@@ -14,7 +14,4 @@ module.exports = function (oldMember, newMember) {
             }
         }
     }
-
-
-
 };

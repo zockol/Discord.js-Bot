@@ -26,6 +26,7 @@ module.exports = function () {
 	}
 	create("settings")
 	create("voicebans")
+	create("voiceActivity")
 
 	}
 
