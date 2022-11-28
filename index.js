@@ -5,6 +5,7 @@ const interactionCreate = require("./functions/Interactions/interactionCreate.js
 const welcomeMessage = require("./functions/welcomeMessage/welcomeMessage.js");
 const createSettings = require("./functions/createJsons/createSettings.js");
 const fs = require("fs");
+const voicebanCheck = require("./functions/voiceEvents/voicebanCheck.js");
 
 const client = new Client({
 	intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
@@ -17,11 +18,15 @@ client.on("ready", () => {
 });
 
 client.on("interactionCreate", async (interaction) => {
-	interactionCreate(interaction);
+	interactionCreate(interaction, client);
 });
 
 client.on("guildMemberAdd", (member) => {
 	welcomeMessage(member, client);
 });
+
+client.on("voiceStateUpdate", (member) => {
+	voicebanCheck(member)
+})
 
 client.login(process.env.TOKEN);

@@ -1,3 +1,4 @@
+const voiceban = require("./InteractionExecutes/voicebanCommand.js");
 const settings = require("./InteractionExecutes/settingsCommand.js");
 
 module.exports = async function (interaction) {
@@ -9,5 +10,7 @@ module.exports = async function (interaction) {
 		await interaction.reply("Pong!");
 	} else if (commandName === "settings") {
 		settings(interaction);
+	} else if (commandName === "voiceban") {
+		voiceban(interaction);
 	}
 };
