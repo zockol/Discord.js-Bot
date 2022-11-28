@@ -7,6 +7,7 @@ const createJsons = require("./functions/createJsons/createJsons.js");
 const fs = require("fs");
 const voicebanCheck = require("./functions/voiceEvents/voicebanCheck.js");
 const voiceActivity = require("./functions/voiceEvents/voiceActivity.js");
+const resetTimeStamps = require("./functions/voiceEvents/resetTimeStamps.js");
 
 const client = new Client({
 	intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildVoiceStates],
@@ -16,6 +17,7 @@ client.on("ready", () => {
 	console.log("Bot is online");
 	createJsons();
 	deployCommands();
+	resetTimeStamps();
 });
 
 client.on("interactionCreate", async (interaction) => {
