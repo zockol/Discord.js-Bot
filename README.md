@@ -62,6 +62,8 @@
 I created this project with a friend of mine i met in the IT University. We wanted to get into something together and started this project to get a bit more into
 JavaScript and to make cool stuff with discord.js
 
+Feel free to [open issues](https://github.com/zockol/Discord.js-Bot/issues) to submit feature ideas and see a list of known issues.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
@@ -84,23 +86,13 @@ node.js
 
 Coming soon
 
-## To-Do-List
-
-- Expanded Audit Log
-- Fun Commands with API's
-- Canteen plan with support of "Mensaplan"
-- Creditcheck for the canteen card
-- Server Rankings with Voice, Streaming and Message Activity
-- Server Ranks based on the one above
-- a few more coming soon
-
-Feel free to [open issues](https://github.com/zockol/Discord.js-Bot/issues) to submit feature ideas and see a list of known issues.
-
 ## Working Commands/Functions
 
 - /settings x y | Enable/Disable different Settings
 - Activate "Welcome Messages" in specific channels by using /settings
-- automatically create a settings.json file on first bot start
+- automatically create a necessary .json files on first bot start
+- /voiceban user | prevent the user from joining any voicechannels
+- voice activity tracking (not fully finished yet)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
