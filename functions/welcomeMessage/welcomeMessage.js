@@ -6,7 +6,7 @@ module.exports = function (member, client) {
 	var readSettings = fs.readFileSync(__dirname + pathSettings);
 	var fileSettings = JSON.parse(readSettings);
 
-	if (fileSettings[0].welcomeMessage == true) {
+	if (fileSettings["welcomeMessage"].welcomeMessage == true) {
 		welcomeEmbed(member, client.channels.cache.get(fileSettings[0].Channel));
 	}
 };
