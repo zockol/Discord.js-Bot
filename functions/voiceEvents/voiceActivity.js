@@ -13,19 +13,24 @@ module.exports = function (oldMember, newMember) {
     if (!File[userID]) {
         File[userID] = {Name: userTAG, Time: 0, LastJoinedTimeStamp: DateInSeconds};
     } else {
-        if (newMember.channelId != oldMember.channelId) {
-
-            if (oldMember.channelId != null && File[userID].LastJoinedTimeStamp != 0) {
-                File[userID].Time += (DateInSeconds - File[userID].LastJoinedTimeStamp)
-            }
-            
-            if (newMember.channelId != null) {
-                File[userID].LastJoinedTimeStamp = DateInSeconds
-            } else {
-                File[userID].LastJoinedTimeStamp = 0
+        if ((newMember.channelId != oldMember.channelId) || (!oldMember.selfDeaf && newMember.selfDeaf)) {
+            if (oldMember.channelId != null) {
+                if (File[userID].LastJoinedTimeStamp != 0 ) {
+                    File[userID].Time += (DateInSeconds - File[userID].LastJoinedTimeStamp)
+                }
             }
             
         }
+        
+        if (newMember.channelId != null && newMember.channelId != oldMember.channelId) {
+            File[userID].LastJoinedTimeStamp = DateInSeconds
+        } else if (oldMember.selfDeaf && !newMember.selfDeaf) {
+            File[userID].LastJoinedTimeStamp = DateInSeconds
+        } else {
+            File[userID].LastJoinedTimeStamp = 0
+        }
+            
+        
     }
 
 
