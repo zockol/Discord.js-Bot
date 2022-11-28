@@ -8,7 +8,7 @@ const fs = require("fs");
 const voicebanCheck = require("./functions/voiceEvents/voicebanCheck.js");
 
 const client = new Client({
-	intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
+	intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildVoiceStates],
 });
 
 client.on("ready", () => {
@@ -25,8 +25,8 @@ client.on("guildMemberAdd", (member) => {
 	welcomeMessage(member, client);
 });
 
-client.on("voiceStateUpdate", (member) => {
-	voicebanCheck(member)
+client.on("voiceStateUpdate", (oldMember, newMember) => {
+	voicebanCheck(oldMember,newMember)
 })
 
 client.login(process.env.TOKEN);
