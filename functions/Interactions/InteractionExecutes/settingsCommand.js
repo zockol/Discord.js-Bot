@@ -7,12 +7,25 @@ module.exports = async function (interaction) {
 
 	var interactionChannel = interaction.channelId;
 	var interactionBool = interaction.options.getBoolean("active");
-	fileSettings[0].welcomeMessage = interactionBool;
-	fileSettings[0].Channel = interactionChannel;
-	fs.writeFileSync(__dirname + pathSettings, JSON.stringify(fileSettings, null, 2)); //if not, create it
-	if (interactionBool == true) {
-		interaction.reply(`Welcome Messages are now posted in <#${interactionChannel}>!`);
-	} else {
-		interaction.reply("Welcome Message are now disabled");
+
+	if (!fileSettings["welcomeMessage"]) {
+        fileSettings["welcomeMessage"] = {Active: interactionBool, Channel: interactionChannel}
+		if (!interactionBool) {
+			interaction.reply(`Welcome Messages are not active yet!`)
+		} else {
+			interaction.reply(`Welcome Messages are now posted in <#${interactionChannel}>!`);
+		}
+        
+    } else {
+		fileSettings["welcomeMessage"].Active = interactionBool;
+		fileSettings["welcomeMessage"].Channel = interactionChannel;
+
+		if (interactionBool == true) {
+			interaction.reply(`Welcome Messages are now posted in <#${interactionChannel}>!`);
+		} else {
+			interaction.reply("Welcome Message are now disabled");
+		}
 	}
+
+	fs.writeFileSync(__dirname + pathSettings, JSON.stringify(fileSettings, null, 2)); //if not, create it
 };
