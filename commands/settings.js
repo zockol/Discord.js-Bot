@@ -8,6 +8,9 @@ module.exports = {
 			option.setName("setting").setDescription("What setting do you want to change?").setRequired(true).addChoices({
 				name: "welcomeMessage",
 				value: "welcome_message",
+			},{
+				name: "activityBoard",
+				value: "activity_board"
 			})
 		)
 		.addBooleanOption((option) => option.setName("active").setDescription("set the setting to active (true) or inactive (false)").setRequired(true)),

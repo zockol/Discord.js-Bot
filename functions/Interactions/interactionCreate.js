@@ -1,5 +1,6 @@
 const voiceban = require("./InteractionExecutes/voicebanCommand.js");
-const settings = require("./InteractionExecutes/settingsCommand.js");
+const welcome = require("./InteractionExecutes/welcomeCommand.js");
+const activityBoard = require("./InteractionExecutes/activityBoardCommand.js");
 
 module.exports = async function (interaction) {
 	if (!interaction.isChatInputCommand()) return;
@@ -9,7 +10,13 @@ module.exports = async function (interaction) {
 	if (commandName === "ping") {
 		await interaction.reply("Pong!");
 	} else if (commandName === "settings") {
-		settings(interaction);
+		var Option = interaction.options.getString("setting")
+		if (Option == "welcome_message") {
+			welcome(interaction);
+		} else if (Option == "activity_board") {
+			activityBoard(interaction)
+		}
+		
 	} else if (commandName === "voiceban") {
 		voiceban(interaction);
 	}
