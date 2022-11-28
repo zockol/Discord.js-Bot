@@ -8,6 +8,8 @@ module.exports = async function (interaction) {
     var userID = interaction.options.getUser("user").id
     var userTAG = interaction.options.getUser("user").tag
 
+    interaction.member.voice.disconnect();
+
     if (!File[userID]) {
         File[userID] = {Username: userTAG, Banned: 1};
         interaction.reply(`<@${userID}> got his permissions to join voice removed!`)
