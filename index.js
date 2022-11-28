@@ -6,6 +6,7 @@ const welcomeMessage = require("./functions/welcomeMessage/welcomeMessage.js");
 const createJsons = require("./functions/createJsons/createJsons.js");
 const fs = require("fs");
 const voicebanCheck = require("./functions/voiceEvents/voicebanCheck.js");
+const voiceActivity = require("./functions/voiceEvents/voiceActivity.js");
 
 const client = new Client({
 	intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildVoiceStates],
@@ -27,6 +28,7 @@ client.on("guildMemberAdd", (member) => {
 
 client.on("voiceStateUpdate", (oldMember, newMember) => {
 	voicebanCheck(oldMember,newMember)
+	voiceActivity(oldMember, newMember)
 })
 
 client.login(process.env.TOKEN);

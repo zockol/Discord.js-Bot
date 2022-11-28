@@ -8,14 +8,14 @@ function create(jsonName) {
 
 
 		fs.writeFile(`./jsons/${jsonName}.json`, "{ }", function (err) {
-			console.log("File is created successfully.");
+			
 		});
 
 		delay(1000).then(() => {
 			var Path = `./jsons/${jsonName}.json`;
 			var Read = fs.readFileSync(Path);
 			var File = JSON.parse(Read);
-
+			console.log("File is created successfully.");
 			fs.writeFileSync(Path, JSON.stringify(File, null, 2)); //if not, create it
 		});
 };
@@ -23,10 +23,11 @@ function create(jsonName) {
 module.exports = function () {
 	if (!fs.existsSync(`./jsons/settings.json`)) {
 		fs.mkdirSync("./jsons");
+		create("settings")
+		create("voicebans")
+		create("voiceActivity")
 	}
-	create("settings")
-	create("voicebans")
-	create("voiceActivity")
+
 
 	}
 
